@@ -1,5 +1,4 @@
-import { useState } from "react"
-
+import { useState } from 'react'
 
 function App() {
   const [newItem, setNewItem] = useState("")
@@ -35,12 +34,24 @@ function deleteItem(id){
 
   return (
     <>
-    <h1 className="Header">My To do List</h1>
+    <div style={{
+      fontFamily:"Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
+    }}>
+    <h1 className="Header"><i>My To do List...</i></h1>
+
     <form onSubmit={handleSubmit}>
-      <label htmlFor="items">New Items</label>
-      <input value={newItem} onChange={e => setNewItem(e.target.value)} type="text" ></input>
-      <button>Add</button>
+      <label className="items">New Items</label>
+      <br></br><input style={{
+        height:"20px",
+        width:"200px",
+      }} value={newItem} onChange={e => setNewItem(e.target.value)} type="text" ></input>
+      <button style={{
+        height:"30px",
+        width:"50px",
+        marginLeft:"10px",
+    }}>Add</button>
     </form>
+
     {toDo.length === 0 && "Nothing on the list as yet"}
     {toDo.map(toDo => {
     return ( <div key={toDo.id}>
@@ -48,10 +59,16 @@ function deleteItem(id){
         <input type="checkbox" checked={toDo.completed} onChange={e => done(toDo.id, e.target.checked)}/>
         {toDo.title}
       </label>
-      <button onClick={() =>deleteItem(toDo.id)} className="btn">Delete</button>
+      <button onClick={() =>deleteItem(toDo.id)} className="btn" style={{
+      fontFamily:"Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
+      marginLeft:"100px",
+      height:"30px",
+      width:"60px",
+    }}>Delete</button>
       </div>
     )
     })}
+    </div>
     </>
   )
 }
